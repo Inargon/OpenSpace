@@ -216,8 +216,7 @@ class MCPClient:
         servers = self._get_mcp_servers()
         
         if not servers:
-            warnings.warn("No MCP servers defined in config", UserWarning, stacklevel=2)
-            return None
+            raise ValueError("No MCP servers defined in config")
 
         if server_name not in servers:
             raise ValueError(f"Server '{server_name}' not found in config. Available: {list(servers.keys())}")
